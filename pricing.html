@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Pricing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            text-align: left;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        /* Pricing section */
+        .pricing-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .pricing-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card h2 {
+            margin: 0 0 10px;
+        }
+
+        .pricing-card ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .pricing-card ul li {
+            margin: 5px 0;
+        }
+
+        .currency-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .select-plan {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Social media section */
+        .social-media {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-media img {
+            width: 30px;
+            margin: 0 10px;
+        }
+
+        /* Contact section */
+        .contact-section {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .pricing-card {
+                width: 90%;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="#">Products</a>
+    </div>
+    <center>
+    <h1>Motion Cut</h1>
+</center>
+
+    <!-- Pricing section -->
+    <div class="currency-selector">
+        <label for="currency">Select Currency: </label>
+        <select id="currency" onchange="updatePrices()">
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+            <option value="GBP">£ GBP</option>
+            <option value="JPY">¥ JPY</option>
+            <option value="INR">₹ INR</option>
+        </select>
+    </div>
+
+    <div class="pricing-section">
+        <div class="pricing-card" data-price="10">
+            <h2>Basic Plan</h2>
+            <p class="price">$10 / month</p>
+            <ul>
+                <li>✔️ Feature 1</li>
+                <li>✔️ Feature 2</li>
+                <li>✔️ Feature 3</li>
+            </ul>
+            <button class="select-plan" onclick="selectPlan('Basic Plan', 10)">Select Plan</button>
+        </div>
+        <div class="pricing-card" data-price="20">
+            <h2>Standard Plan</h2>
+            <p class="price">$20 / month</p>
+            <ul>
+                <li>✔️ Feature 1</li>
+                <li>✔️ Feature 2</li>
+                <li>✔️ Feature 3</li>
+                <li>✔️ Feature 4</li>
+                <li>✔️ Feature 5</li>
+                <li>✔️ Feature 6</li>
+            </ul>
+            <button class="select-plan" onclick="selectPlan('Standard Plan', 20)">Select Plan</button>
+        </div>
+        <div class="pricing-card" data-price="30">
+            <h2>Premium Plan</h2>
+            <p class="price">$30 / month</p>
+            <ul>
+                <li>✔️ Feature 1</li>
+                <li>✔️ Feature 2</li>
+                <li>✔️ Feature 3</li>
+                <li>✔️ Feature 4</li>
+                <li>✔️ Feature 5</li>
+                <li>✔️ Feature 6</li>
+                <li>✔️ Feature 7</li>
+                <li>✔️ Feature 8</li>
+                <li>✔️ Feature </li>
+            </ul>
+            <button class="select-plan" onclick="selectPlan('Premium Plan', 30)">Select Plan</button>
+        </div>
+    </div>
+
+    <!-- Social media section -->
+    <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Facebook-icon-1.png" alt="Facebook"></a>
+        <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+        <a href="https://linkedin.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn"></a>
+    </div>
+
+    <!-- Contact section -->
+    <div class="contact-section">
+        <p>Address: 1234 Example St, City, Country</p>
+        <p>Contact: +123 456 7890</p>
+        <p>Email: info@example.com</p>
+    </div>
+
+    <script>
+        function updatePrices() {
+            const currency = document.getElementById('currency').value;
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                const basePrice = card.getAttribute('data-price');
+                let convertedPrice;
+                switch (currency) {
+                    case 'EUR':
+                        convertedPrice = basePrice * 0.85; // Example conversion rate
+                        break;
+                    case 'GBP':
+                        convertedPrice = basePrice * 0.75; // Example conversion rate
+                        break;
+                    case 'JPY':
+                        convertedPrice = basePrice * 110; // Example conversion rate
+                        break;
+                    case 'INR':
+                        convertedPrice = basePrice * 75; // Example conversion rate
+                        break;
+                    default:
+                        convertedPrice = basePrice;
+                }
+                card.querySelector('.price').textContent = getCurrencySymbol(currency) + convertedPrice.toFixed(2) + ' / month';
+            });
+        }
+
+        function getCurrencySymbol(currency) {
+            switch (currency) {
+                case 'EUR':
+                    return '€';
+                case 'GBP':
+                    return '£';
+                case 'JPY':
+                    return '¥';
+                case 'INR':
+                    return '₹';
+                default:
+                    return '$';
+            }
+        }
+
+        function selectPlan(planName, basePrice) {
+            const currency = document.getElementById('currency').value;
+            let convertedPrice;
+            switch (currency) {
+                case 'EUR':
+                    convertedPrice = basePrice * 0.85; // Example conversion rate
+                    break;
+                case 'GBP':
+                    convertedPrice = basePrice * 0.75; // Example conversion rate
+                    break;
+                case 'JPY':
+                    convertedPrice = basePrice * 110; // Example conversion rate
+                    break;
+                case 'INR':
+                    convertedPrice = basePrice * 75; // Example conversion rate
+                    break;
+                default:
+                    convertedPrice = basePrice;
+            }
+            const price = getCurrencySymbol(currency) + convertedPrice.toFixed(2);
+            const userName = prompt(`You have selected the ${planName}. Please enter your name:`);
+            const userEmail = prompt(`Thank you, ${userName}. Please enter your email:`);
+            if (userName && userEmail) {
+                alert(`Thank you, ${userName}! You have selected the ${planName} for ${price}. We will contact you shortly at ${userEmail}.`);
+            } else {
+                alert("Selection canceled or incomplete information provided.");
+            }
+        }
+    </script>
+</body>
+</html>
